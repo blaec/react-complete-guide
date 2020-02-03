@@ -44,7 +44,6 @@ class App extends Component {
     };
 
     deletePersonHandler = (personIndex) => {
-        debugger;
         // const persons = this.state.persons.slice();
         const persons = [...this.state.persons];
         persons.splice(personIndex, 1);
@@ -84,10 +83,18 @@ class App extends Component {
             style.backgroundColor = 'red';
         }
 
+        let classes = [];
+        if (this.state.persons.length <= 2) {
+            classes.push('red');
+        }
+        if (this.state.persons.length <= 1) {
+            classes.push('bold');
+        }
+
         return (
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
-                <p>This is really working!</p>
+                <p className={classes.join(' ')}>This is really working!</p>
                 <button style={style}
                         onClick={this.togglePersonsHandler}>Toggle Persons</button>
                 {persons}
