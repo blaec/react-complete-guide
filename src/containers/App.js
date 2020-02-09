@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './App.css';
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import WithClass from "../hoc/WithClass"
 
 class App extends Component {
     constructor(props) {
@@ -29,17 +30,17 @@ class App extends Component {
     //     console.log('[App.js] componentWillMount');
     // }
 
-    switchNameHandler = () => {
-        // console.log('Was clicked!')
-        // DONT DO THIS this.state.persons[0].name = 'Maximilian';
-        this.setState({
-            persons: [
-                {name: 'Maximilian', age: 28},
-                {name: 'Manu', age: 29},
-                {name: 'Stephanie', age: 27}
-            ]
-        })
-    };
+    // switchNameHandler = () => {
+    //     // console.log('Was clicked!')
+    //     // DONT DO THIS this.state.persons[0].name = 'Maximilian';
+    //     this.setState({
+    //         persons: [
+    //             {name: 'Maximilian', age: 28},
+    //             {name: 'Manu', age: 29},
+    //             {name: 'Stephanie', age: 27}
+    //         ]
+    //     })
+    // };
 
     componentDidMount() {
         console.log('[App.js] componentDidMount');
@@ -96,7 +97,7 @@ class App extends Component {
         }
 
         return (
-            <div className={classes.App}>
+            <WithClass classes={classes.App}>
                 <button onClick={() => {
                     this.setState({showCockpit: false})
                 }}>
@@ -108,7 +109,7 @@ class App extends Component {
                                                     clicked={this.togglePersonsHandler}/>
                 ) : null}
                 {persons}
-            </div>
+            </WithClass>
         );
         // return React.createElement('div', {className: 'App'}, React.createElement('h1',null, 'Hi, I\'m a React App!!!'));
     }
