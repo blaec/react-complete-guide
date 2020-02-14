@@ -42,7 +42,8 @@ class App extends PureComponent {
         ],
         otherState: 'some other value',
         showPersons: false,
-        toggleClicked: 0
+        toggleClicked: 0,
+        authenticated: false
     };
 
     switchNameHandler = () => {
@@ -92,6 +93,10 @@ class App extends PureComponent {
         });
     };
 
+    loginHander = () => {
+        this.setState({authenticated: true});
+    };
+
     render() {
         console.log('[App.js] render()');
         let persons = null;
@@ -99,7 +104,8 @@ class App extends PureComponent {
         if (this.state.showPersons) {
             persons = <Persons persons={this.state.persons}
                                clicked={this.deletePersonHandler}
-                               changed={this.nameChangedHandler}/>;
+                               changed={this.nameChangedHandler}
+                               isAuthenticated={this.state.authenticated}/>;
         }
 
         return (
@@ -108,6 +114,7 @@ class App extends PureComponent {
                 <Cockpit appTitle={this.props.title}
                          showPersons={this.state.showPersons}
                          persons={this.state.persons}
+                         login={this.loginHander}
                          clicked={this.togglePersonsHandler}/>
                 {persons}
             </Aux>
