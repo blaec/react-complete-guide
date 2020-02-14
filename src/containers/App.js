@@ -118,4 +118,5 @@ class App extends PureComponent {
 
 // npm install --save radium
 // npm install --save styled-components
+// npm install --save prop-types
 export default withClass(App, classes.App);
